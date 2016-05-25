@@ -61,7 +61,7 @@ public class ServerRequest {
         	
         	@Override
         	public void onSuccess(ResponseInfo<String> responseInfo) {
-        		LogUtil.i("HttpRequest", "onSuccess url="+url+",statusCode="+responseInfo.statusCode+",result="+responseInfo.result);
+        		LogUtil.i("HttpRequest", "onSuccess statusCode="+responseInfo.statusCode+",result="+responseInfo.result);
         		if(listener!=null){
         			listener.onSuccess(urlTypeId, responseInfo.result, obj);
         		}
