@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- Http请求的类型 -->
+    <item name="url_request_login" type="id"/>
+    <item name="url_request_register" type="id"/>
+    <item name="url_request_change_pwd" type="id"/>
+    
+    <item name="url_request_weather_query" type="id"/>
+    
+</resources>
