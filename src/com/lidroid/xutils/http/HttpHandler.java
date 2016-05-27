@@ -198,7 +198,7 @@ public class HttpHandler<T> extends PriorityAsyncTask<Object, Object, Void> impl
         switch ((Integer) values[0]) {
             case UPDATE_START:
                 this.state = State.STARTED;
-                LogUtils.i("onStart requestUrl="+request.getURI());
+                LogUtils.i(request.getMethod()+" onStart requestUrl="+request.getURI());
                 callback.onStart();
                 break;
             case UPDATE_LOADING:
@@ -212,13 +212,13 @@ public class HttpHandler<T> extends PriorityAsyncTask<Object, Object, Void> impl
             case UPDATE_FAILURE:
                 if (values.length != 3) return;
                 this.state = State.FAILURE;
-                LogUtils.i("onFailure requestUrl="+request.getURI());
+                LogUtils.e(request.getMethod()+" onFailure requestUrl="+request.getURI());
                 callback.onFailure((HttpException) values[1], (String) values[2]);
                 break;
             case UPDATE_SUCCESS:
                 if (values.length != 2) return;
                 this.state = State.SUCCESS;
-                LogUtils.i("onSuccess requestUrl="+request.getURI());
+                LogUtils.i(request.getMethod()+" onSuccess requestUrl="+request.getURI());
                 callback.onSuccess((ResponseInfo<T>) values[1]);
                 break;
             default:
