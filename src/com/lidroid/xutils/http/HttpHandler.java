@@ -20,6 +20,7 @@ import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.callback.*;
 import com.lidroid.xutils.task.PriorityAsyncTask;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.util.OtherUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -197,6 +198,7 @@ public class HttpHandler<T> extends PriorityAsyncTask<Object, Object, Void> impl
         switch ((Integer) values[0]) {
             case UPDATE_START:
                 this.state = State.STARTED;
+                LogUtils.i("onStart requestUrl="+request.getURI());
                 callback.onStart();
                 break;
             case UPDATE_LOADING:
@@ -210,11 +212,13 @@ public class HttpHandler<T> extends PriorityAsyncTask<Object, Object, Void> impl
             case UPDATE_FAILURE:
                 if (values.length != 3) return;
                 this.state = State.FAILURE;
+                LogUtils.i("onFailure requestUrl="+request.getURI());
                 callback.onFailure((HttpException) values[1], (String) values[2]);
                 break;
             case UPDATE_SUCCESS:
                 if (values.length != 2) return;
                 this.state = State.SUCCESS;
+                LogUtils.i("onSuccess requestUrl="+request.getURI());
                 callback.onSuccess((ResponseInfo<T>) values[1]);
                 break;
             default:

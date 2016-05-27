@@ -325,9 +325,6 @@ public class HttpUtils {
             handler.setPriority(params.getPriority());
         }
         
-        /** log查看请求的url **/
-        LogUtils.i("request url="+request.getURI());
-        
         handler.executeOnExecutor(EXECUTOR, request);
         return handler;
     }

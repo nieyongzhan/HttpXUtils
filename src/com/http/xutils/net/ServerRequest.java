@@ -61,7 +61,7 @@ public class ServerRequest {
         	
         	@Override
         	public void onSuccess(ResponseInfo<String> responseInfo) {
-        		LogUtil.i("HttpRequest", "onSuccess statusCode="+responseInfo.statusCode+",result="+responseInfo.result);
+        		LogUtil.i("HttpRequest", "statusCode="+responseInfo.statusCode+",result="+responseInfo.result);
         		if(listener!=null){
         			listener.onSuccess(urlTypeId, responseInfo.result, obj);
         		}
@@ -69,7 +69,7 @@ public class ServerRequest {
         	
         	@Override
         	public void onFailure(HttpException error, String msg) {
-        		LogUtil.e("HttpRequest", "onFailure url="+url+",msg="+msg+",error="+error);
+        		LogUtil.e("HttpRequest", "msg="+msg+",error="+error);
         		if(listener!=null){
         			listener.onFailure(urlTypeId, error, msg, obj);
         		}
