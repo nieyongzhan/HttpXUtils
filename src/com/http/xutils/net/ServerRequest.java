@@ -4,15 +4,13 @@ package com.http.xutils.net;
 import com.http.xutils.R;
 import com.http.xutils.interfaces.RequestListener;
 import com.http.xutils.util.Constant;
-import com.http.xutils.util.LogUtil;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
-
-import android.app.PendingIntent.OnFinished;
+import com.lidroid.xutils.util.LogUtils;
 
 /**
  * 通用Http接口请求
@@ -61,7 +59,7 @@ public class ServerRequest {
         	
         	@Override
         	public void onSuccess(ResponseInfo<String> responseInfo) {
-        		LogUtil.i("HttpRequest", "statusCode="+responseInfo.statusCode+",result="+responseInfo.result);
+        		LogUtils.i("onSuccess statusCode="+responseInfo.statusCode+",result="+responseInfo.result);
         		if(listener!=null){
         			listener.onSuccess(urlTypeId, responseInfo.result, obj);
         		}
@@ -69,7 +67,7 @@ public class ServerRequest {
         	
         	@Override
         	public void onFailure(HttpException error, String msg) {
-        		LogUtil.e("HttpRequest", "msg="+msg+",error="+error);
+        		LogUtils.e("onFailure msg="+msg+",error="+error);
         		if(listener!=null){
         			listener.onFailure(urlTypeId, error, msg, obj);
         		}
@@ -87,25 +85,21 @@ public class ServerRequest {
 
         	@Override
         	public void onStart() {
-        		LogUtil.i("HttpRequest", "requestPost onStart");
         		super.onStart();
         	}
         	
         	@Override
         	public void onLoading(long total, long current, boolean isUploading) {
-        		LogUtil.i("HttpRequest", "requestPost onLoading");
         		super.onLoading(total, current, isUploading);
         	}
         	
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
-				LogUtil.i("HttpRequest", "requestPost onSuccess");
 				
 			}
 
 			@Override
 			public void onFailure(HttpException error, String msg) {
-				LogUtil.i("HttpRequest", "requestPost onFailure");
 				
 			}  
   
