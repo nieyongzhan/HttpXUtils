@@ -12,6 +12,11 @@
 bin/
 gen/
 out/
+.classpath
+.project
+.settings
+_layouts
+proguard.cfg
 
 # Gradle files
 .gradle/
@@ -37,3 +42,9 @@ captures/
 
 # Keystore files
 *.jks
+
+# IDEA
+*.iml
+*.ipr
+*.iws
+.idea
